@@ -12,7 +12,7 @@ class TodoDashboard extends React.Component {
       {task: "10 minutes meditation", completed: false, id: 1},
       {task: "Read for 1hour", completed: false, id: 2},
       {task: "Pick up groceries", completed: false, id: 3},
-      {task: "Complete Todo App on Frontend Mentro", completed: false, id: 4}
+      {task: "Complete Todo App on Frontend Mentor", completed: false, id: 4}
     ],
     sortedTodos: [],
   }
