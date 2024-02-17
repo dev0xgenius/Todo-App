@@ -1,6 +1,6 @@
 import TodoAction from './TodoAction';
 
-function TodoInfo({items}) {
+function TodoInfo({items, onClearCompleted}) {
   return (
     <div className='todoInfo'>
       <span className='info'>
@@ -8,7 +8,7 @@ function TodoInfo({items}) {
       </span>
       <TodoAction
         text="Clear Completed"
-        action={console.log}
+        action={() => onClearCompleted()}
         />
     </div>
   );

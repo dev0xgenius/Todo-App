@@ -1,28 +1,39 @@
-// import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoAction from './TodoAction';
 
 function Todo(props) {
-  const updateTodo = () => console.log(props.completed);
+  const [isComplete, setIsComplete] = useState();
+
+  const markTodo = () => {
+    setIsComplete(!isComplete);
+    props.onMarkComplete(props.id);
+  };
+
+  const markComplete = () => {
+    const todo = document.getElementById(`${props.id}`);
+    
+    if (props.completed) todo.classList.add('completed');
+    else todo.classList.remove('completed');
+  }
+
+  useEffect(markComplete, [isComplete]);
+
   return (
-    <li className='todo'>
-      <label>
+    <li className='todo' id={props.id}>
+      <label className="checkboxContainer">
         <input type='checkbox' 
           checked={props.completed}
-          onChange={updateTodo}
+          onChange={markTodo}
         />
-        <TodoAction
-          text=""
-          className="checkbox"
-          action={() => props.markComplete(props.id)}
-          />
+        <span className='checkbox'></span>
       </label>
       <input type='text'
         defaultValue={props.task}
-        disabled={true}
+        readOnly={true}
       />
       <TodoAction
         text="X"
-        action={() => props.deleteTodo(props.id)}/>
+        action={() => props.onDelete(props.id)} />
     </li>
   );
 }
