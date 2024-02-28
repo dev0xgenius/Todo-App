@@ -73,8 +73,8 @@ class TodoDashboard extends React.Component {
 
   clearCompleted = () => {
     this.setState({
-    todos: this.state.todos.filter(todo => todo.completed === false),
-    sortedTodos: this.state.todos.filter(todo => todo.completed === false)
+      todos: this.state.todos.filter(todo => todo.completed === false),
+      sortedTodos: this.state.todos.filter(todo => todo.completed === false)
     })
   }
 

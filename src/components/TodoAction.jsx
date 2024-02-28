@@ -8,7 +8,7 @@ function TodoAction(props) {
           props.className == 'action btn' ? 
           props.className : "" }
         onClick={props.action}>
-        {props.text}
+        {props.text || props.img}
       </button>
     </div>
   );

@@ -5,30 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" sizes="32x32" href="./public/images/favicon-32x32.png">
- 
+
   <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
   <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
 
-  <link rel='stylesheet' type='text/css' href="./src/css/dark-theme.css" />
+  <link rel='stylesheet' type='text/css' id="theme" href="./src/css/dark-theme.css" />
   <link rel="stylesheet" type="text/css" href="./src/css/index.css" />
   <title>Frontend Mentor | Todo app</title>
 </head>
 
 <body>
-  <!-- <div class=""> -->
-    <div class="app-image">
-       <!-- <img src="images/bg-mobile-dark.jpg" alt="header background"  -->
-      <!-- width="100%" height="auto" /> -->
+  <div class="app-image">
+  </div>
+  <main class="ui main">
+    <div class="header">
+      <h1>T O D O</h1>
+      <button id="themeSwitch">
+        <img src="/images/icon-sun.svg" alt="" class="theme-mode" />
+      </button>
     </div>
-    <main class="ui main">
-      <div class="header">
-        <h1>T O D O</h1>
-        <img src="/images/icon-sun.svg" alt="" />
-      </div>
-      <div id="content"></div>
-    </main>
+    <div id="content"></div>
+  </main>
   <!-- </div> -->
 </body>
 <script type="module" src="./src/main.jsx"></script>
+<script src="./helpers/mode_switch.js"></script>
 </html>

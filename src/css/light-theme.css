@@ -1,0 +1,25 @@
+:root {
+  --hover-state: hsl(235, 19%, 35%);
+  --main-background: hsl(236, 33%, 92%);
+  --list-background: hsl(0, 0%, 98%);
+  --text-color: hsl(235, 19%, 35%);
+  --text-color-hover: hsl(235, 19%, 35%);
+  --color-5: hsl(234, 11%, 52%);
+  --color-6: hsl(236, 9%, 61%);
+  --color-7: hsl(233, 11%, 84%);
+}
+
+.col {
+  box-shadow: 0px 0px 10px var(--color-7);
+}
+
+.app-image {
+  background: url("/public/images/bg-mobile-light.jpg");
+}
+@media (min-width: 500px) {
+  .app-image {
+    background: url("/public/images/bg-desktop-light.jpg");
+  }
+}
+
+/*# sourceMappingURL=light-theme.css.map */

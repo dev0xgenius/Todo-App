@@ -26,13 +26,16 @@ function Todo(props) {
           onChange={markTodo}
         />
         <span className='checkbox'></span>
+        <span className='check'>
+          <img src='/images/icon-check.svg' alt=""/>
+        </span>
       </label>
       <input type='text'
         defaultValue={props.task}
         readOnly={true}
       />
       <TodoAction
-        text="X"
+        img={<img src="/images/icon-cross.svg" alt=""/>}
         action={() => props.onDelete(props.id)} />
     </li>
   );

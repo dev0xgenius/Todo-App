@@ -4,6 +4,8 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+  outline: none;
+  border: none;
   box-sizing: border-box;
 }
 
@@ -33,17 +35,12 @@ body {
   width: 100%;
   min-height: 200px;
   z-index: -1;
-  background: url('/public/images/bg-mobile-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
   img {
     display: block;
     max-height: 200px;
-  }
-
-  @media (min-width: 500px) {
-    background: url('/public/images/bg-desktop-dark.jpg');
   }
 }
 
@@ -62,6 +59,11 @@ main.ui {
     width: 100%;
     justify-content: space-between;
 
+    button {
+      background-color: transparent;
+      border: none;
+    }
+
     h1 {
       font-size: 1.7em;
       color: white;
@@ -78,7 +80,7 @@ input {
 }
 
 input[type='checkbox'] { display: none; }
-input[type='checkbox'] ~ .checkbox{
+input[type='checkbox'] ~ .checkbox {
   position: relative;
   display: inline-block;
   width: 20px;
@@ -92,15 +94,30 @@ input:checked ~ .checkbox{
   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-.checkbox:after {
-  content: "";
-  position: absolute;
+.check { 
+  position: absolute; 
+  display: none;
+}
 
+input:checked ~ .check {
+  display: block;
+}
+
+.checkboxContainer {
+  position: relative;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input::placeholder {
   color: var(--color-5);
   font-weight: bold;
+  // opacity: .7;
+}
+
+input:focus {
+  color: black;
 }
 
 #content {
@@ -108,7 +125,7 @@ input::placeholder {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 
   .todo-form {
     @include flex;
@@ -128,7 +145,7 @@ input::placeholder {
     @include flex; gap: 0;
     width: 100%;
     flex-direction: column;
-    color: var(--color-5);
+    // color: dodgerblue;
     font-size: 1.2em;
 
     .todo {
@@ -142,6 +159,13 @@ input::placeholder {
       @media (min-width: 500px) {
         input { font-size: .8em; }
       }
+
+      &:hover {
+        input {
+          color: var(--text-color-hover);
+        }
+      }
+
       .checkbox button {
         display: block;
         width: 20px;
@@ -152,7 +176,7 @@ input::placeholder {
       }
 
       &:hover .checkbox{
-        border: 1px solid var(--neutral-blue);
+        border: 1px solid var(--hover-state);
       }
     }
 
@@ -191,7 +215,7 @@ input::placeholder {
   .action-list {
     @include flex;
     position: absolute;
-    bottom: -80px;
+    bottom: -70px;
     max-width: 500px;
     width: 100%;
     align-self: center;
@@ -217,13 +241,13 @@ input::placeholder {
     outline: none;
     background: transparent;
   }
-
-  .action.btn:hover {
+  
+  .action.btn:hover{ 
     color: var(--text-color-hover);
   }
 
   .action.btn:active {
-    color: var(--neutral-blue);
+    color: hsl(220, 98%, 61%);
   }
 
   .action-list .action.btn {
