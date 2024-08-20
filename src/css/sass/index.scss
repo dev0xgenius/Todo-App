@@ -133,6 +133,10 @@ input:focus {
     width: 100%;
     padding: 15px;
     border-radius: 6px;
+
+    [name="todo-data"] {
+      color: var(--text-color);
+    }
   }
 
   .col {
