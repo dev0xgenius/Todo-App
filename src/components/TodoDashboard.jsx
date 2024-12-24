@@ -98,7 +98,7 @@ class TodoDashboard extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="todo dashboard">
         <TodoForm
           title={"Create a new Todo"}
           handleForm={this.handleForm}
@@ -119,7 +119,7 @@ class TodoDashboard extends React.Component {
           showActive={this.showActive}
           showCompleted={this.showCompleted}
         />
-      </>
+      </div>
     );
   }
 }
