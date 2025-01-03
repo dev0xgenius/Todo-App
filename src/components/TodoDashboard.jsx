@@ -21,7 +21,7 @@ export default function TodoDashboard() {
   }, []);
   
   useEffect(() => {
-    setSortedTodos(currentValue => todos);
+    setSortedTodos(currentValue => todos.concat());
   }, [todos]);
 
   const createTodo = (formChildren) => {
@@ -46,8 +46,8 @@ export default function TodoDashboard() {
   };
 
   const markComplete = (id) => {
-    let updatedTasks = this.state.todos.concat();
-
+    let updatedTasks = todos.concat();
+    
     for (let i = 0; i < updatedTasks.length; i++) {
       if (updatedTasks[i].id === id) {
         updatedTasks[i].completed = !updatedTasks[i].completed;

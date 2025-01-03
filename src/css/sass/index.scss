@@ -24,11 +24,70 @@ body {
   background-color: var(--main-background);
 }
 
-@mixin flex{
+@mixin flex (
+  $gap: 10px,
+  $direction: row
+){
   display: flex;
+  flex-direction: $direction;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: $gap;
+}
+
+.todo.dashboard {
+  width: 100%;
+  position: relative;
+  @include flex ($gap: 1rem, $direction: column);
+  
+  .col {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    border-radius: 6px;
+  }
+  
+  .action-list {
+    @include flex;
+    max-width: 500px;
+    width: 100%;
+    align-self: center;
+    flex: 1;
+    padding: 18px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 500px) {
+      position: absolute;
+      width: max-content;
+      bottom: 0;
+      padding: 18px;
+      background-color: transparent;
+    }
+  }
+
+  .btn { font-size: 1rem; }
+
+  .action.btn {
+    color: var(--color-5);
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+  
+  .action.btn:hover{ 
+    color: var(--text-color-hover);
+  }
+
+  .action.btn:active {
+    color: hsl(220, 98%, 61%);
+  }
+
+  .action-list .action.btn {
+    font-weight: bolder;
+    font-size: .9rem;
+  }
 }
 
 .app-image {
@@ -140,13 +199,7 @@ input:focus {
       color: var(--text-color);
     }
   }
-
-  .col {
-    height: auto;
-    overflow: auto;
-    border-radius: 6px;
-  }
-
+  
   .todo-list {
     @include flex; gap: 0;
     width: 100%;
@@ -206,59 +259,11 @@ input:focus {
     .action.btn {
       font-weight: bold;
     }
-    // span.info {
-    //   display: block;
-    //   // font-size: 1em;
-    //   font-weight: bolder;
-    // }
 
     button {
       font-size: .8em;
       border: none;
     }
-  }
-
-  .action-list {
-    @include flex;
-    position: absolute;
-    bottom: -70px;
-    max-width: 500px;
-    width: 100%;
-    align-self: center;
-    flex: 1;
-    padding: 18px;
-    border-radius: 6px;
-    align-items: center;
-    justify-content: center;
-
-    @media (min-width: 500px) {
-      width: max-content;
-      bottom: 0;
-      padding: 18px;
-      background-color: transparent;
-    }
-  }
-
-  .btn { font-size: 1em; }
-
-  .action.btn {
-    color: var(--color-5);
-    border: none;
-    outline: none;
-    background: transparent;
-  }
-  
-  .action.btn:hover{ 
-    color: var(--text-color-hover);
-  }
-
-  .action.btn:active {
-    color: hsl(220, 98%, 61%);
-  }
-
-  .action-list .action.btn {
-    font-weight: bolder;
-    font-size: .9em;
   }
 }
 
