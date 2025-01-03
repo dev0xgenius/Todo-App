@@ -1,7 +1,8 @@
 import TodoAction from "./TodoAction";
 
 function Actions(props) {
-  const actions = [
+  const actions = 
+  [
     {text: "All", action: props.showAll},
     {text: "Active", action: props.showActive},
     {text: "Completed", action: props.showCompleted}
@@ -21,4 +22,4 @@ function Actions(props) {
   );
 }
 
-export default Actions
+export default Actions;

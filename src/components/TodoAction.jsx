@@ -18,4 +18,4 @@ TodoAction.defaultProps = {
   className: "action btn",
 }
 
-export default TodoAction
+export default TodoAction;

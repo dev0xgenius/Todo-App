@@ -14,4 +14,4 @@ function TodoInfo({items, onClearCompleted}) {
   );
 }
 
-export default TodoInfo
+export default TodoInfo;

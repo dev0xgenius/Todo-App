@@ -3,34 +3,31 @@ import TodoForm from './TodoForm'
 import TodoInfo from "./TodoInfo";
 import Todos from './Todos';
 import Actions from "./Actions";
+import { useState, useEffect } from "react";
 
-class TodoDashboard extends React.Component {
-  state = {
-    todos: [
+export default function TodoDashboard() {
+  const [todos, setTodos] = useState([]);
+  const [sortedTodos, setSortedTodos] = useState([]);
+  
+  useEffect(() => {
+    setTodos(todos => [
       {task: "Complete the javascript course", completed: true, id: 5},
       {task: "Jog around the park 3x", completed: false, id: 0},
       {task: "10 minutes meditation", completed: false, id: 1},
       {task: "Read for 1hour", completed: false, id: 2},
       {task: "Pick up groceries", completed: false, id: 3},
       {task: "Complete Todo App on Frontend Mentor", completed: false, id: 4}
-    ],
-    sortedTodos: [],
-  }
+    ]);
+  }, []);
+  
+  useEffect(() => {
+    setSortedTodos(currentValue => todos);
+  }, [todos]);
 
-  componentDidMount() {
-    this.setState({
-      sortedTodos: this.state.todos.concat()
-    });
-  }
-
-  handleForm = (formChildren) => {
-    this.createTodo(formChildren);
-  }
-
-  createTodo = (formChildren) => {
-    const todos = this.state.todos;
+  const createTodo = (formChildren) => {
+    const todoList = todos.concat();
     const idExists = (id) => {
-      for (let todo of todos)
+      for (let todo of todoList)
         if (id === todo.id) return true;
       return false;
     };
@@ -44,84 +41,65 @@ class TodoDashboard extends React.Component {
       completed: false,
       id: newTimerId
     };
+    
+    setTodos(currentValue => todoList.concat([newTodo]));
+  };
 
-    const updatedTodos = todos.concat([newTodo]);
-    this.setState({
-      todos: updatedTodos,
-      sortedTodos: updatedTodos
-    });
-  }
-
-  markComplete = (id) => {
+  const markComplete = (id) => {
     let updatedTasks = this.state.todos.concat();
 
     for (let i = 0; i < updatedTasks.length; i++) {
       if (updatedTasks[i].id === id) {
         updatedTasks[i].completed = !updatedTasks[i].completed;
-        this.setState({todos: updatedTasks});
+        setTodos(c => updatedTasks);
+        
+        break;
       }
     }
+  };
 
-  }
+  const deleteTodo = (todoID) => {
+    setTodos(todoList => todoList.filter(todo => todo.id !== todoID));
+  };
 
-  deleteTodo = (todoID) => {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== todoID),
-      sortedTodos: this.state.todos.filter(todo => todo.id !== todoID)
-    })
-  }
+  const clearCompleted = () => {
+    setTodos(todoList => todoList.filter(todo => todo.completed === false));
+  };
 
-  clearCompleted = () => {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.completed === false),
-      sortedTodos: this.state.todos.filter(todo => todo.completed === false)
-    })
-  }
+  const showAll = () => {
+    setSortedTodos(c => todos.concat());
+  };
 
-  showAll = () => {
-    this.setState({
-      sortedTodos: this.state.todos.concat()
-    })
-  }
+  const showActive = () => {
+    setSortedTodos(todoList => todoList.filter(todo => todo.completed === false));
+  };
 
-  showActive = () => {
-    this.setState({
-      sortedTodos: this.state.todos.filter(todo => todo.completed === false)
-    })
-  }
+  const showCompleted = () => {
+    setSortedTodos(todoList => todoList.filter(todo => todo.completed === true));
+  };
 
-  showCompleted = () => {
-    this.setState({
-      sortedTodos: this.state.todos.filter(todo => todo.completed === true)
-    })
-  }
-
-  render() {
-    return (
-      <div className="todo dashboard">
-        <TodoForm
-          title={"Create a new Todo"}
-          handleForm={this.handleForm}
+  return (
+    <div className="todo dashboard">
+      <TodoForm
+        title={"Create a new Todo"}
+        handleForm={createTodo}
+      />
+      <div className="col">
+        <Todos
+          todos={sortedTodos}
+          onDelete={deleteTodo}
+          onMarkComplete={markComplete}
         />
-        <div className="col">
-          <Todos
-            todos={this.state.sortedTodos}
-            onDelete={this.deleteTodo}
-            onMarkComplete={this.markComplete}
-          />
-          <TodoInfo
-            items={this.state.sortedTodos.length}
-            onClearCompleted={this.clearCompleted}
-          />
-        </div>
-        <Actions 
-          showAll={this.showAll}
-          showActive={this.showActive}
-          showCompleted={this.showCompleted}
+        <TodoInfo
+          items={sortedTodos.length}
+          onClearCompleted={clearCompleted}
         />
       </div>
-    );
-  }
-}
-
-export default TodoDashboard
+      <Actions 
+        showAll={showAll}
+        showActive={showActive}
+        showCompleted={showCompleted}
+      />
+    </div>
+  );
+};

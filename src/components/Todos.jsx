@@ -18,4 +18,4 @@ function Todos(props) {
   );
 }
 
-export default Todos
+export default Todos;
