@@ -58,26 +58,26 @@ export default function TodoDashboard() {
     }
   };
 
-  const deleteTodo = (todoID) => {
+  const deleteTodo = (todoID) => 
     setTodos(todoList => todoList.filter(todo => todo.id !== todoID));
-  };
 
-  const clearCompleted = () => {
-    setTodos(todoList => todoList.filter(todo => todo.completed === false));
-  };
+  const clearCompleted = () =>
+    setTodos(todoList => todoList.filter(todo => todo.completed == false));
+  
+  const showAll = () => setSortedTodos(c => todos.concat());
 
-  const showAll = () => {
-    setSortedTodos(c => todos.concat());
-  };
+  const showActive = () => 
+    setSortedTodos((_) => todos.filter(todo => todo.completed == false));
 
-  const showActive = () => {
-    setSortedTodos(todoList => todoList.filter(todo => todo.completed === false));
-  };
+  const showCompleted = () => 
+    setSortedTodos((_) => todos.filter(todo => todo.completed == true));
 
-  const showCompleted = () => {
-    setSortedTodos(todoList => todoList.filter(todo => todo.completed === true));
-  };
-
+  const actions = [
+    {text: "All", action: showAll},
+    {text: "Active", action: showActive},
+    {text: "Completed", action: showCompleted}
+  ];
+  
   return (
     <div className="todo dashboard">
       <TodoForm
@@ -95,10 +95,8 @@ export default function TodoDashboard() {
           onClearCompleted={clearCompleted}
         />
       </div>
-      <Actions 
-        showAll={showAll}
-        showActive={showActive}
-        showCompleted={showCompleted}
+      <Actions
+        actions={actions}
       />
     </div>
   );

@@ -1,17 +1,10 @@
 import TodoAction from "./TodoAction";
 
-function Actions(props) {
-  const actions = 
-  [
-    {text: "All", action: props.showAll},
-    {text: "Active", action: props.showActive},
-    {text: "Completed", action: props.showCompleted}
-  ];
-
+export default function Actions(props) {
   return (
     <ul className="action-list">
       {
-        actions.map((action, index) => (
+        props.actions.map((action, index) => (
           <TodoAction
             text={action.text}
             action={action.action}
@@ -22,6 +15,4 @@ function Actions(props) {
       }
     </ul>
   );
-}
-
-export default Actions;
+};
