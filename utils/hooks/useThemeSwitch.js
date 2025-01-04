@@ -5,8 +5,8 @@ export default function useThemeSwitch (switchState) {
     const themeStylesheet = document.querySelector("#themeStylesheet");
     let stylesheetHref = themeStylesheet.href;
     
-    if (switchState.mode == "light") stylesheetHref = "src/css/light-theme.css"; 
-    else if (switchState.mode == "dark") stylesheetHref = "src/css/dark-theme.css";
+    if (switchState.mode == "light") stylesheetHref = "css/light-theme.css"; 
+    else if (switchState.mode == "dark") stylesheetHref = "css/dark-theme.css";
     themeStylesheet.href = stylesheetHref;
     
   }, [switchState]);

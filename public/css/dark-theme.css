@@ -10,16 +10,15 @@
 }
 
 .app-image {
-  background: url("/public/images/bg-mobile-dark.jpg");
+  background: url("/images/bg-mobile-dark.jpg");
 }
+
 @media (min-width: 500px) {
   .app-image {
-    background: url("/public/images/bg-desktop-dark.jpg");
+    background: url("/images/bg-desktop-dark.jpg");
   }
 }
 
 #content .action.btn:hover {
   color: var(--text-color-hover);
 }
-
-/*# sourceMappingURL=dark-theme.css.map */

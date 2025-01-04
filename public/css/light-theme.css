@@ -14,12 +14,10 @@
 }
 
 .app-image {
-  background: url("/public/images/bg-mobile-light.jpg");
+  background: url("/images/bg-mobile-light.jpg");
 }
 @media (min-width: 500px) {
   .app-image {
-    background: url("/public/images/bg-desktop-light.jpg");
+    background: url("/images/bg-desktop-light.jpg");
   }
 }
-
-/*# sourceMappingURL=light-theme.css.map */

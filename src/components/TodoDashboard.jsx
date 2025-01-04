@@ -95,9 +95,7 @@ export default function TodoDashboard() {
           onClearCompleted={clearCompleted}
         />
       </div>
-      <Actions
-        actions={actions}
-      />
+      <Actions actions={actions} />
     </div>
   );
 };

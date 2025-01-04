@@ -11,10 +11,10 @@
 
 
 .app-image {
-  background: url('/public/images/bg-mobile-dark.jpg');
+  background: url('/images/bg-mobile-dark.jpg');
 
   @media (min-width: 500px) {
-    background: url('/public/images/bg-desktop-dark.jpg');
+    background: url('/images/bg-desktop-dark.jpg');
   }
 }
 
