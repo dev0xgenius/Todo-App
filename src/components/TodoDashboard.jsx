@@ -81,8 +81,9 @@ export default function TodoDashboard() {
   return (
     <div className="todo dashboard">
       <TodoForm
-        title={"Create a new Todo"}
-        handleForm={createTodo}
+        open={true}
+        handler={createTodo}
+        placeholderText="Create a new Todo"
       />
       <div className="col">
         <Todos

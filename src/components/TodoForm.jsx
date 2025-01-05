@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 
-function TodoForm(props) {  
-  const [formValue, setFormValue] = useState("");
+export default function TodoForm(props) {  
+  const [formValue, setFormValue] = useState(props.value || "");
 
   const handleSubmit = (event) =>  {
     event.preventDefault();
-    props.handleForm(event.target.children);
-    updateFormValue();
+    props.handler(event.target.children);
+    clearForm(event.target);
   }
 
-  function updateFormValue() {
-    setFormValue("");
-    document.getElementById('todoData')
-      .value="";
+  function clearForm(form) {
+    setFormValue(fV => "");
+    form.querySelector('.todo-data').value="";
   }
 
-  return (
+  return props.open ? (
     <form className="todo-form"
       name="todo-form"
       onSubmit={handleSubmit}
@@ -29,12 +28,10 @@ function TodoForm(props) {
       </label>
       <input
         type="text" name="todo-data" 
-        id="todoData"
-        placeholder={props.title}
+        className="todo-data"
+        placeholder={props.placeholderText}
         defaultValue={formValue}
       />
-    </form>
-  );
+    </form> 
+  ) : <></>;
 }
-
-export default TodoForm;
