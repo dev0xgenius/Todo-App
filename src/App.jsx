@@ -2,7 +2,6 @@ import React from 'react'
 import useThemeSwitch from '../utils/hooks/useThemeSwitch.js'
 import { useState } from "react";
 import TodoDashboard from './components/TodoDashboard';
-import "/css/index.css";
 
 export default function App () {
   const [theme, setTheme] = useState({
