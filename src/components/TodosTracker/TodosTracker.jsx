@@ -1,17 +1,15 @@
-import TodoAction from './TodoAction';
+import Button from '../Button/Button.jsx';
 
-function TodoInfo({items, onClearCompleted}) {
+export default function TodosTracker({items, onClearCompleted}) {
   return (
     <div className='todoInfo'>
       <span className='info'>
         {items} items left
       </span>
-      <TodoAction
+      <Button
         text="Clear Completed"
         action={() => onClearCompleted()}
         />
     </div>
   );
-}
-
-export default TodoInfo;
+};

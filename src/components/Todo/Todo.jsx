@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import TodoAction from './TodoAction';
+import Button from '../Button/Button.jsx';
 
 function Todo(props) {
   const [isComplete, setIsComplete] = useState();
@@ -34,9 +34,10 @@ function Todo(props) {
         defaultValue={props.task}
         readOnly={true}
       />
-      <TodoAction
+      <Button
         img={<img src="/images/icon-cross.svg" alt=""/>}
-        action={() => props.onDelete(props.id)} />
+        action={() => props.onDelete(props.id)} 
+      />
     </li>
   );
 }

@@ -1,11 +1,11 @@
-import TodoAction from "./TodoAction";
+import Button from "../Button/Button.jsx";
 
-export default function Actions(props) {
+export default function ToolBar(props) {
   return (
     <ul className="action-list">
       {
         props.actions.map((action, index) => (
-          <TodoAction
+          <Button
             text={action.text}
             action={action.action}
             keyIndex={index}

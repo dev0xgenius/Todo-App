@@ -1,7 +1,7 @@
 import React from 'react'
 import useThemeSwitch from '../utils/hooks/useThemeSwitch.js'
 import { useState } from "react";
-import TodoDashboard from './components/TodoDashboard';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
 
 export default function App () {
   const [theme, setTheme] = useState({
@@ -12,7 +12,6 @@ export default function App () {
   const toggleTheme = (evt) => {
     const imgSrc = (theme.mode == "dark") ? 
       "/images/icon-moon.svg" : "/images/icon-sun.svg";
-
     setTheme(currentTheme => (
       {...currentTheme, 
         mode: (currentTheme.mode == "light") ? "dark" : "light",
@@ -34,7 +33,7 @@ export default function App () {
             <img src={theme.indicatorImg} alt="" className="themeIndicator"/>
           </button>
         </div>
-        <TodoDashboard />
+        <Dashboard />
       </main>
     </>
   );

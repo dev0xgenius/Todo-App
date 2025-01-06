@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Todo from "./Todo";
+import Todo from "../Todo/Todo.jsx";
 
 function Todos(props) {
   const todos = props.todos.map(todo => (

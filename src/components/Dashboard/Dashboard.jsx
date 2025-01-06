@@ -1,11 +1,11 @@
 import React from "react";
-import TodoForm from './TodoForm'
-import TodoInfo from "./TodoInfo";
-import Todos from './Todos';
-import Actions from "./Actions";
+import TodoForm from '../TodoForm/TodoForm.jsx'
+import TodosTracker from "../TodosTracker/TodosTracker.jsx";
+import Todos from '../Todos/Todos.jsx';
+import ToolBar from "../ToolBar/ToolBar.jsx";
 import { useState, useEffect } from "react";
 
-export default function TodoDashboard() {
+export default function Dashboard() {
   const [todos, setTodos] = useState([]);
   const [sortedTodos, setSortedTodos] = useState([]);
   
@@ -37,7 +37,7 @@ export default function TodoDashboard() {
       newTimerId = Math.floor(Math.random(0, 10) * 1000000);
 
     const newTodo = {
-      task: formChildren[1].value, //Second input element value
+      task: formChildren[1].value,
       completed: false,
       id: newTimerId
     };
@@ -91,12 +91,12 @@ export default function TodoDashboard() {
           onDelete={deleteTodo}
           onMarkComplete={markComplete}
         />
-        <TodoInfo
+        <TodosTracker
           items={sortedTodos.length}
           onClearCompleted={clearCompleted}
         />
       </div>
-      <Actions actions={actions} />
+      <ToolBar actions={actions} />
     </div>
   );
 };

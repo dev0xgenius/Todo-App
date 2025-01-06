@@ -1,12 +1,10 @@
-function TodoAction(props) {
+export default function Button(props) {
   return (
     <div className={
       props.className != "action btn" ?
       props.className : "" }>
-      <button
-        className={
-          props.className == 'action btn' ? 
-          props.className : "" }
+      <button className =
+          { props.className == 'action btn' ? props.className : "" }
         onClick={props.action}>
         {props.text || props.img}
       </button>
@@ -14,8 +12,6 @@ function TodoAction(props) {
   );
 }
 
-TodoAction.defaultProps = {
+Button.defaultProps = {
   className: "action btn",
-}
-
-export default TodoAction;
+};
