@@ -59,10 +59,10 @@ export default function Dashboard() {
   };
 
   const deleteTodo = (todoID) => 
-    setTodos(todoList => todoList.filter(todo => todo.id !== todoID));
+    setTodos(todos => todos.filter(todo => todo.id !== todoID));
 
   const clearCompleted = () =>
-    setTodos(todoList => todoList.filter(todo => todo.completed == false));
+    setTodos(todos => todos.filter(todo => todo.completed == false));
   
   const showAll = () => setSortedTodos(c => todos.concat());
 
@@ -96,7 +96,7 @@ export default function Dashboard() {
           onClearCompleted={clearCompleted}
         />
       </div>
-      <ToolBar actions={actions} />
+      <ToolBar tools={actions} />
     </div>
   );
 };

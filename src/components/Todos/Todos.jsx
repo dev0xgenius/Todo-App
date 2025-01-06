@@ -1,11 +1,12 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 import Todo from "../Todo/Todo.jsx";
+import { useState } from "react";
 
-function Todos(props) {
+export default function Todos(props) {
   const todos = props.todos.map(todo => (
     <Todo
-      task={todo.task}
-      completed={todo.completed}
+      description={todo.task}
+      isCompleted={todo.completed}
       id={todo.id}
       key={todo.id}
       onDelete={props.onDelete}
@@ -14,8 +15,16 @@ function Todos(props) {
   ));
 
   return (
-    <ul className="todo-list">{todos}</ul>
+    <ul className="todo-list">{ todos }</ul>
   );
-}
+};
 
-export default Todos;
+Todos.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      task: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+      id: PropTypes.number.isRequired
+    }),
+  )
+};

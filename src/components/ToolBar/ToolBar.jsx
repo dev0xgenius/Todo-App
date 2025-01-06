@@ -1,13 +1,14 @@
+import PropTypes from "prop-types";
 import Button from "../Button/Button.jsx";
 
 export default function ToolBar(props) {
   return (
     <ul className="action-list">
       {
-        props.actions.map((action, index) => (
+        props.tools.map((tool, index) => (
           <Button
-            text={action.text}
-            action={action.action}
+            text={tool.text}
+            clickHandler={tool.action}
             keyIndex={index}
             key={index}
           />
@@ -15,4 +16,13 @@ export default function ToolBar(props) {
       }
     </ul>
   );
+};
+
+ToolBar.propTypes = {
+  tools: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      action: PropTypes.func
+    })
+  ),
 };

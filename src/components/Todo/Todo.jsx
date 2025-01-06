@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from 'react';
 import Button from '../Button/Button.jsx';
 
-function Todo(props) {
+export default function Todo(props) {
   const [isComplete, setIsComplete] = useState();
 
   const markTodo = () => {
@@ -11,7 +12,6 @@ function Todo(props) {
 
   const markComplete = () => {
     const todo = document.getElementById(`${props.id}`);
-    
     if (props.completed) todo.classList.add('completed');
     else todo.classList.remove('completed');
   }
@@ -22,7 +22,7 @@ function Todo(props) {
     <li className='todo' id={props.id}>
       <label className="checkboxContainer">
         <input type='checkbox' 
-          checked={props.completed}
+          checked={props.isCompleted}
           onChange={markTodo}
         />
         <span className='checkbox'></span>
@@ -31,15 +31,20 @@ function Todo(props) {
         </span>
       </label>
       <input type='text'
-        defaultValue={props.task}
+        defaultValue={props.description}
         readOnly={true}
       />
       <Button
         img={<img src="/images/icon-cross.svg" alt=""/>}
-        action={() => props.onDelete(props.id)} 
+        clickHandler={() => props.onDelete(props.id)} 
       />
     </li>
   );
-}
+};
 
-export default Todo;
+Todo.propTypes = {
+  isCompleted: PropTypes.bool.isRequired,
+  onMarkComplete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  description: PropTypes.string,
+};

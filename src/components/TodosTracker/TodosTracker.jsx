@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Button from '../Button/Button.jsx';
 
 export default function TodosTracker({items, onClearCompleted}) {
@@ -8,8 +9,13 @@ export default function TodosTracker({items, onClearCompleted}) {
       </span>
       <Button
         text="Clear Completed"
-        action={() => onClearCompleted()}
-        />
+        clickHandler={() => onClearCompleted()}
+      />
     </div>
   );
+};
+
+TodosTracker.propTypes = {
+  items: PropTypes.number.isRequired,
+  onClearCompleted: PropTypes.func.isRequired,
 };

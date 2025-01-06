@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 export default function TodoForm(props) {  
@@ -15,15 +16,9 @@ export default function TodoForm(props) {
   }
 
   return props.open ? (
-    <form className="todo-form"
-      name="todo-form"
-      onSubmit={handleSubmit}
-      >
+    <form className="todo-form" name="todo-form" onSubmit={handleSubmit}>
       <label>
-        <input type='checkbox'
-          name="todo-checked"
-          disabled={true}
-        />
+        <input type="checkbox" name="todo-checked" disabled={true} />
         <span className="checkbox"></span>
       </label>
       <input
@@ -34,4 +29,10 @@ export default function TodoForm(props) {
       />
     </form> 
   ) : <></>;
+};
+
+TodoForm.propTypes = {
+  open: PropTypes.bool.isRequired,
+  placeholderText: PropTypes.string,
+  handler: PropTypes.func,
 };
