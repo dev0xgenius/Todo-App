@@ -1,0 +1,28 @@
+@import "../../scss/config/mixins";
+
+.toolBar {
+    @include flex;
+    max-width: 500px;
+    width: 100%;
+    align-self: center;
+    flex: 1;
+    padding: 18px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    background: var(--list-background);
+    border: none;
+
+    @media (min-width: 500px) {
+      position: absolute;
+      width: max-content;
+      bottom: 0;
+      padding: 18px;
+      background-color: transparent;
+    }
+    
+    button {
+      font-weight: bolder;
+      font-size: .9rem;
+    }
+  }

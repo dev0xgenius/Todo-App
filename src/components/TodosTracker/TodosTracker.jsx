@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 import Button from '../Button/Button.jsx';
+import styles from "./todosTracker.module.scss";
 
 export default function TodosTracker({items, onClearCompleted}) {
   return (
-    <div className='todoInfo'>
-      <span className='info'>
-        {items} items left
-      </span>
+    <div className={styles.todosTracker}>
+      <span>{items} items left</span>
       <Button
         text="Clear Completed"
         clickHandler={() => onClearCompleted()}

@@ -1,9 +1,9 @@
-import React from "react";
-import TodoForm from '../TodoForm/TodoForm.jsx'
-import TodosTracker from "../TodosTracker/TodosTracker.jsx";
-import Todos from '../Todos/Todos.jsx';
-import ToolBar from "../ToolBar/ToolBar.jsx";
+import TodoForm from "../TodoForm/TodoForm";
+import TodosTracker from "../TodosTracker/TodosTracker";
+import Todos from '../Todos/Todos';
+import ToolBar from "../ToolBar/ToolBar";
 import { useState, useEffect } from "react";
+import styles from "./dashboard.module.scss";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState([]);
@@ -79,13 +79,13 @@ export default function Dashboard() {
   ];
   
   return (
-    <div className="todo dashboard">
+    <div className={styles.todoDashboard}>
       <TodoForm
         open={true}
         handler={createTodo}
         placeholderText="Create a new Todo"
       />
-      <div className="col">
+      <div className={styles.col}>
         <Todos
           todos={sortedTodos}
           onDelete={deleteTodo}

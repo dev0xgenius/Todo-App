@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import styles from "./todoForm.module.scss";
 
 export default function TodoForm(props) {  
   const [formValue, setFormValue] = useState(props.value || "");
@@ -16,7 +17,7 @@ export default function TodoForm(props) {
   }
 
   return props.open ? (
-    <form className="todo-form" name="todo-form" onSubmit={handleSubmit}>
+    <form className={styles.todoForm} name="todo-form" onSubmit={handleSubmit}>
       <label>
         <input type="checkbox" name="todo-checked" disabled={true} />
         <span className="checkbox"></span>

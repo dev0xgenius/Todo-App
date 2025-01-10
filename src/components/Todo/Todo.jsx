@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from 'react';
 import Button from '../Button/Button.jsx';
+import styles from "./todo.module.scss";
 
 export default function Todo(props) {
   const [isComplete, setIsComplete] = useState();
@@ -19,7 +20,7 @@ export default function Todo(props) {
   useEffect(markComplete, [isComplete]);
 
   return (
-    <li className='todo' id={props.id}>
+    <li className={styles.todo} id={props.id}>
       <label className="checkboxContainer">
         <input type='checkbox' 
           checked={props.isCompleted}

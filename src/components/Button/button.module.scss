@@ -1,0 +1,14 @@
+.presetBtn {
+  color: var(--color-5);
+  border: none;
+  outline: none;
+  background: transparent;
+  
+  &:active { 
+    color: var(--text-color-hover);
+  }
+  
+  &:hover {
+    color: hsl(220, 98%, 61%);
+  }
+}

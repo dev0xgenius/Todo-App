@@ -1,22 +1,17 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import styles from "./button.module.scss";
 
 export default function Button(props) {
   return (
-    <div
-      className = { props.className != "action btn" ? props.className : "" }
-    >
+    <div>
       <button className =
-        { props.className == 'action btn' ? props.className : "" }
+        { props.className ? props.className : `${styles.presetBtn}` }
         onClick={props.clickHandler}>
         { props.text || props.img }
       </button>
     </div>
   );
 }
-
-Button.defaultProps = {
-  className: "action btn",
-};
 
 Button.propTypes = {
   className: PropTypes.string,

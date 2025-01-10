@@ -1,0 +1,46 @@
+@import "../../scss/config/mixins";
+
+.todo {
+  @include flex;
+  width: 100%;
+  padding: 18px;
+  background: var(--list-background);
+  border: none;
+  border-bottom: 1px solid var(--color-7);
+  
+  input {
+    cursor: pointer;
+  }
+  
+  @media (min-width: 500px) {
+    input {
+      font-size: .8rem;
+    }
+  }
+  
+  &:hover {
+    input {
+      color: var(--text-color-hover);
+    }
+    
+    .checkbox {
+      border: 1px solid var(--hover-state);
+    }
+  }
+  
+  .checkbox button {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  &.completed {
+    input {
+      opacity: .5;
+      text-decoration: line-through;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import React from 'react'
-import useThemeSwitch from '../utils/hooks/useThemeSwitch.js'
+import React from 'react';
+import useThemeSwitch from '../utils/hooks/useThemeSwitch.js';
 import { useState } from "react";
 import Dashboard from './components/Dashboard/Dashboard.jsx';
+import "./scss/index.scss";
 
 export default function App () {
   const [theme, setTheme] = useState({
@@ -12,6 +13,7 @@ export default function App () {
   const toggleTheme = (evt) => {
     const imgSrc = (theme.mode == "dark") ? 
       "/images/icon-moon.svg" : "/images/icon-sun.svg";
+      
     setTheme(currentTheme => (
       {...currentTheme, 
         mode: (currentTheme.mode == "light") ? "dark" : "light",
@@ -24,8 +26,7 @@ export default function App () {
   
   return (
     <>
-      <div className="app-image">
-      </div>
+      <div className="background-image"></div>
       <main className="ui main">
         <div className="header">
           <h1>T O D O</h1>

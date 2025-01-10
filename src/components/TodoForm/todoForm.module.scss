@@ -1,0 +1,15 @@
+@import "../../scss/config/mixins";
+
+.todoForm {
+  @include flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 15px;
+  border-radius: 6px;
+  background: var(--list-background);
+  border: none;
+
+  [name="todo-data"] {
+    color: var(--text-color);
+  }
+}

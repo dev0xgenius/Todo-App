@@ -1,0 +1,17 @@
+.todosTracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;    
+  color: var(--color-5);
+  font-size: 1em;
+  font-weight: bold;
+  background: var(--list-background);
+  border: none;
+
+  button {
+    font-weight: bold;
+    font-size: .8em;
+    border: none;
+  }
+}

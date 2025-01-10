@@ -1,0 +1,9 @@
+@import "../../scss/config/mixins";
+
+.todoList {
+  @include flex;
+  gap: 0;
+  width: 100%;
+  flex-direction: column;
+  font-size: 1.2em;
+}

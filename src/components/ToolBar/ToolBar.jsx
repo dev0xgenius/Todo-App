@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import Button from "../Button/Button.jsx";
+import styles from "./toolBar.module.scss";
 
-export default function ToolBar(props) {
+export default function ToolBar({tools}) {
   return (
-    <ul className="action-list">
+    <ul className={styles.toolBar}>
       {
-        props.tools.map((tool, index) => (
+        tools.map((tool, index) => (
           <Button
             text={tool.text}
             clickHandler={tool.action}

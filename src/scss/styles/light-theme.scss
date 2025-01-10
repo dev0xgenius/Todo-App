@@ -13,7 +13,7 @@
   box-shadow: 0px 0px 10px var(--color-7);
 }
 
-.app-image {
+.background-image {
   background: url('/images/bg-mobile-light.jpg');
 
   @media (min-width: 500px) {
@@ -21,12 +21,8 @@
   }
 }
 
-// #content .action.btn:hover {
-//   color: var(--hover-state);
-// }
-
-$VeryLightGray: hsl(0, 0%, 98%);
+/* $VeryLightGray: hsl(0, 0%, 98%);
 $VeryLightGrayishBlue: hsl(236, 33%, 92%);
 $LightGrayishBlue: hsl(233, 11%, 84%);
 $DarkGrayishBlue: hsl(236, 9%, 61%);
-$VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+$VeryDarkGrayishBlue: hsl(235, 19%, 35%); */

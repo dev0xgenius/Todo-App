@@ -1,0 +1,16 @@
+ *,
+ *:after,
+ *:before {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  font-family: "Josefin Sans";
+}
+
+*::selection {
+  color: white;
+  background-color: black;  
+}
