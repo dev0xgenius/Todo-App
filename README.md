@@ -9,4 +9,4 @@
 * Todo editing
 * Persistent storage
 
-***Message me on [Telegram](h and suggestions thanks https://t.me/dev0xgenius) for contributions***
+***Message me on [Telegram](https://t.me/dev0xgenius)for contributions and suggestions. Thanks***
