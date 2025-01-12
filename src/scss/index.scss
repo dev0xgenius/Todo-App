@@ -75,7 +75,8 @@ input:checked ~ .checkbox{
 }
 
 .check { 
-  position: absolute; 
+  position: absolute;
+  left: .3rem; bottom: .025rem;
   display: none;
 }
 
@@ -93,7 +94,6 @@ input:checked ~ .check {
 input::placeholder {
   color: var(--color-5);
   font-weight: bold;
-  // opacity: .7;
 }
 
 input:focus {

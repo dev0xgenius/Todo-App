@@ -4,23 +4,17 @@ import Button from '../Button/Button.jsx';
 import styles from "./todo.module.scss";
 
 export default function Todo(props) {
-  const [isComplete, setIsComplete] = useState();
+  const [isComplete, setIsComplete] = useState(props.isCompleted);
+  const todoDynamicStyle = (isComplete) ? 
+    `${styles.todo} ${styles.completed}` : styles.todo;
 
   const markTodo = () => {
     setIsComplete(!isComplete);
     props.onMarkComplete(props.id);
   };
 
-  const markComplete = () => {
-    const todo = document.getElementById(`${props.id}`);
-    if (props.completed) todo.classList.add('completed');
-    else todo.classList.remove('completed');
-  }
-
-  useEffect(markComplete, [isComplete]);
-
   return (
-    <li className={styles.todo} id={props.id}>
+    <li className={todoDynamicStyle} id={props.id}>
       <label className="checkboxContainer">
         <input type='checkbox' 
           checked={props.isCompleted}
@@ -36,7 +30,7 @@ export default function Todo(props) {
         readOnly={true}
       />
       <Button
-        img={<img src="/images/icon-cross.svg" alt=""/>}
+        img = {<img src="/images/icon-cross.svg" alt=""/>}
         clickHandler={() => props.onDelete(props.id)} 
       />
     </li>
