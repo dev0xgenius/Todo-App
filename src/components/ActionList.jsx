@@ -6,9 +6,9 @@ class ActionList extends React.Component {
     return (
       <>
         <ul className="action-list">
-          <TodoAction displayText="All" />
-          <TodoAction displayText="Active" />
-          <TodoAction displayText="Completed" />
+          <li><TodoAction displayText="All" /></li>
+          <li><TodoAction displayText="Active" /></li>
+          <li><TodoAction displayText="Completed" /></li>
         </ul>
       </>
     );

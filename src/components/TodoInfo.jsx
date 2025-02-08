@@ -6,7 +6,9 @@ class TodoInfo extends React.Component {
     return (
       <>
         <div className='todoInfo'>
-          <span className='info'>0 items left</span>
+          <span className='info'>
+            {this.props.items} items left
+          </span>
           <TodoAction displayText="Clear Completed"/>
         </div>
       </>

@@ -35,7 +35,6 @@ main.ui .header h1 {
 
 input {
   width: 100%;
-  padding: 10px;
   border: none;
   outline: none;
 }
@@ -65,7 +64,7 @@ input:checked ~ span.checkbox {
 #content .todo-form {
   justify-content: flex-start;
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid black;
 }
 #content .col {
@@ -79,7 +78,7 @@ input:checked ~ span.checkbox {
 }
 #content .todo-list .todo {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border-bottom: 1px solid black;
 }
 #content .todo-list .todo input {
@@ -88,7 +87,7 @@ input:checked ~ span.checkbox {
 #content .todoInfo {
   display: flex;
   justify-content: space-between;
-  padding: 12px;
+  padding: 10px;
 }
 #content .todoInfo button {
   border: none;
@@ -96,7 +95,7 @@ input:checked ~ span.checkbox {
 }
 #content .action-list {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   justify-content: space-evenly;
   border: 1px solid black;
 }

@@ -9,7 +9,7 @@ class Todo extends React.Component {
           <span className='checkbox'></span>
         </label>
         <input type='text' value={this.props.title}
-        onChange={console.log} />
+        onChange={console.log} disabled="disabled"/>
         <span>x</span>
       </li>
     );
