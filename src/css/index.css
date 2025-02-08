@@ -1,0 +1,109 @@
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+#content .action-list, #content .todo-list .todo, #content .todo-list, #content .todo-form, main.ui .header, main.ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-image {
+  width: 100%;
+}
+
+main.ui {
+  flex-direction: column;
+  width: 100%;
+  padding: 30px;
+  align-items: flex-start;
+}
+main.ui .header {
+  width: 100%;
+  justify-content: space-between;
+}
+main.ui .header h1 {
+  font-size: 1.7em;
+  color: black;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] ~ span.checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+input:checked ~ span.checkbox {
+  background-color: black;
+}
+
+#content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#content .todo-form {
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid black;
+}
+#content .col {
+  height: auto;
+  border: 1px solid black;
+}
+#content .todo-list {
+  gap: 0;
+  width: 100%;
+  flex-direction: column;
+}
+#content .todo-list .todo {
+  width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+#content .todo-list .todo input {
+  border: none;
+}
+#content .todoInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+#content .todoInfo button {
+  border: none;
+  background-color: transparent;
+}
+#content .action-list {
+  width: 100%;
+  padding: 12px;
+  justify-content: space-evenly;
+  border: 1px solid black;
+}
+#content .action.btn {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/*# sourceMappingURL=index.css.map */
