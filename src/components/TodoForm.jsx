@@ -3,14 +3,14 @@ import React from "react";
 class TodoForm extends React.Component {
   render() {
     return (
-      <div className="todo-form">
+      <form className="todo-form" name="todo-form">
         <label>
-          <input type='checkbox' />
+          <input type='checkbox' name="todo-data"/>
           <span className="checkbox"></span>
         </label>
         <input type="text" name="createTodo" 
         placeholder="Create a new Todo"/>
-      </div>
+      </form>
     );
   }
 }

@@ -7,36 +7,47 @@
   box-sizing: border-box;
 }
 
-#content .action-list, #content .todo-list .todo, #content .todo-list, #content .todo-form, main.ui .header, main.ui {
+body {
+  background-color: var(--main-background);
+}
+
+.app-image {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+main.ui {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
-
-.app-image {
-  width: 100%;
-}
-
-main.ui {
   flex-direction: column;
   width: 100%;
-  padding: 30px;
+  padding: 20px;
+  padding-top: 40px;
+  gap: 30px;
   align-items: flex-start;
 }
 main.ui .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   width: 100%;
   justify-content: space-between;
 }
 main.ui .header h1 {
   font-size: 1.7em;
-  color: black;
+  color: white;
 }
 
 input {
   width: 100%;
+  color: var(--text-color);
   border: none;
   outline: none;
+  background-color: transparent;
 }
 
 input[type=checkbox] {
@@ -48,11 +59,16 @@ input[type=checkbox] ~ span.checkbox {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid var(--color-5);
 }
 
 input:checked ~ span.checkbox {
   background-color: black;
+}
+
+input::placeholder {
+  color: var(--color-5);
+  font-weight: bold;
 }
 
 #content {
@@ -62,47 +78,79 @@ input:checked ~ span.checkbox {
   gap: 20px;
 }
 #content .todo-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   justify-content: flex-start;
   width: 100%;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 15px;
+  border-radius: 8px;
 }
 #content .col {
   height: auto;
-  border: 1px solid black;
+  overflow: auto;
+  border-radius: 8px;
 }
 #content .todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   gap: 0;
   width: 100%;
   flex-direction: column;
 }
 #content .todo-list .todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid black;
-}
-#content .todo-list .todo input {
-  border: none;
+  padding: 18px;
+  border-bottom: 1px solid var(--color-6);
 }
 #content .todoInfo {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 18px;
+  color: var(--color-5);
+  font-size: 1em;
+  font-weight: 500;
+}
+#content .todoInfo .info {
+  font-size: 1em;
 }
 #content .todoInfo button {
+  font-size: 0.8em;
   border: none;
-  background-color: transparent;
 }
 #content .action-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   width: 100%;
-  padding: 10px;
-  justify-content: space-evenly;
-  border: 1px solid black;
+  padding: 18px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+#content .btn {
+  font-size: 1em;
 }
 #content .action.btn {
+  color: var(--color-5);
+  font-weight: bolder;
   border: none;
   outline: none;
   background: transparent;
+}
+
+li, form, .action-list, .todoInfo {
+  border: none;
+  background: var(--list-background);
 }
 
 /*# sourceMappingURL=index.css.map */

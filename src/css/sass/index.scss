@@ -7,9 +7,11 @@
   box-sizing: border-box;
 }
 
-// body { background-color: black; }
+body {
+  background-color: var(--main-background);
+}
 
-%flex {
+@mixin flex{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,30 +19,38 @@
 }
 
 .app-image {
+  position: absolute;
   width: 100%;
+  z-index: -1;
 }
 
 main.ui {
-  @extend %flex;
+  @include flex;
   flex-direction: column;
   width: 100%;
-  padding: 30px;
+  padding: 20px;
+  padding-top: 40px;
+  gap: 30px;
   align-items: flex-start;
 
   .header {
-    @extend %flex;
+    @include flex;
     width: 100%;
     justify-content: space-between;
 
-    h1 { font-size: 1.7em; color: black;}
+    h1 {
+      font-size: 1.7em;
+      color: white;
+    }
   }
 }
 
 input {
   width: 100%;
-  // padding: 10px;
+  color: var(--text-color);
   border: none;
   outline: none;
+  background-color: transparent;
 }
 
 input[type='checkbox'] { display: none; }
@@ -49,11 +59,16 @@ input[type='checkbox'] ~ span.checkbox{
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid var(--color-5);
 }
 
 input:checked ~ span.checkbox{
   background-color: black;
+}
+
+input::placeholder {
+  color: var(--color-5);
+  font-weight: bold;
 }
 
 #content {
@@ -63,55 +78,70 @@ input:checked ~ span.checkbox{
   gap: 20px;
 
   .todo-form {
-    @extend %flex;
+    @include flex;
     justify-content: flex-start;
     width: 100%;
-    padding: 10px;
-    border: 1px solid black;
+    padding: 15px;
+    border-radius: 8px;
   }
 
   .col {
     height: auto;
-    border: 1px solid black; 
+    overflow: auto;
+    border-radius: 8px;
   }
 
   .todo-list {
-    @extend %flex; gap: 0;
+    @include flex; gap: 0;
     width: 100%;
     flex-direction: column;
 
     .todo {
-      @extend %flex;
+      @include flex;
       width: 100%;
-      padding: 10px;
-      border-bottom: 1px solid black;
-
-      input { border: none; }
+      padding: 18px;
+      border-bottom: 1px solid var(--color-6);
     }
   }
 
   .todoInfo {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 18px;    
+    color: var(--color-5);
+    font-size: 1em;
+    font-weight: 500;
+    .info { font-size: 1em; }
 
     button {
+      font-size: 0.8em;
       border: none;
-      background-color: transparent;
     }
   }
 
   .action-list {
-    @extend %flex;
+    @include flex;
     width: 100%;
-    padding: 10px;
-    justify-content: space-evenly;
-    border: 1px solid black;
+    padding: 18px;
+    border-radius: 8px;
+    // font-weight: bold;
+    align-items: center;
+    justify-content: center;
   }
 
+  .btn { font-size: 1em; }
+
   .action.btn {
+    color: var(--color-5);
+    font-weight: bolder;
     border: none;
     outline: none;
     background: transparent;
   }
+}
+
+li, form, .action-list, .todoInfo {
+  border: none;
+  background: var(--list-background);
 }

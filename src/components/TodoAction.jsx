@@ -1,15 +1,10 @@
-import React from "react";
-
-class TodoAction extends React.Component {
-  render() {
-    return (
-      <>
-        <button className="action btn">
-          {this.props.displayText}
-        </button>
-      </>
-    );
-  }
+function TodoAction({text, action}) {
+  return (
+    <div>
+      <button className="action btn"
+        onClick={action}>{text}</button>
+    </div>
+  );
 }
 
 export default TodoAction
