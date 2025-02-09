@@ -9,7 +9,7 @@ class TodoDashboard extends React.Component {
     todos: [],
     actions: []
   }
-  
+
   componentDidMount() {
     this.setState({
       todos: [
@@ -26,16 +26,47 @@ class TodoDashboard extends React.Component {
     });
   }
 
+  handleForm = (formChildren) => {
+    const todos = this.state.todos;
+    const newTodo = {
+      task: formChildren[1].value, //Second input element's value
+      completed: false,
+    };
+
+    const updatedTodos = todos.concat([newTodo]);
+    this.setState({todos: updatedTodos});
+  }
+
+  markComplete = (index) => {
+    let updatedTasks = this.state.todos.concat();
+    for (let i = 0; i < updatedTasks.length; i++)
+      if (i === index)
+        updatedTasks[i].completed = !updatedTasks[i].completed;
+    
+    console.log(updatedTasks[0]);
+    this.setState({todos: updatedTasks});
+  }
+
+  deleteTodo = (index) => {
+    let newTasks = this.state.todos.filter((task, i) => index != i);
+    this.setState({todos: newTasks});
+  }
+
   render() {
     return (
       <>
-        <TodoForm />
+        <TodoForm
+          title={"Create a new Todo"}
+          handleForm={this.handleForm}
+        />
         <div className='col'>
           <ul className="todo-list">
             {this.state.todos.map((todo, index) => <Todo
                 task={todo.task}
                 completed={todo.completed}
-                key={index}
+                key={index} id={index}
+                markComplete={this.markComplete}
+                deleteTodo={this.deleteTodo}
                 /> )}
           </ul>
           <TodoInfo items={this.state['todos'].length}/>
