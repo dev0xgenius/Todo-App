@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Todo from "../Todo/Todo";
-import { useState } from "react";
 import styles from "./todos.module.scss";
+import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
 
 export default function Todos(props) {
   const todos = props.todos.map(todo => (
