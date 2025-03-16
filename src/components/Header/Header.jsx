@@ -14,9 +14,9 @@ export default function Header() {
   
   const switchThemeMode = () => (theme.mode == "light") ? "dark" : "light";
   
-  const switchTheme = (evt) => {
+  const switchTheme = () => {
     const switchedMode = switchThemeMode(theme.mode);
-    setTheme(theme => (
+    setTheme(() => (
       {
         mode: switchedMode,
         indicatorImg: imgSource[switchedMode],
@@ -34,4 +34,4 @@ export default function Header() {
       </button>
     </div>
   )
-};
+}

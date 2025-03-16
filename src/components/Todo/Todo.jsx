@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from '../Button/Button.jsx';
 import styles from "./todo.module.scss";
 
@@ -35,9 +35,10 @@ export default function Todo(props) {
       />
     </li>
   );
-};
+}
 
 Todo.propTypes = {
+  id: PropTypes.number,
   isCompleted: PropTypes.bool.isRequired,
   onMarkComplete: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,

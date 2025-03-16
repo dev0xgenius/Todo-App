@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [sortedTodos, setSortedTodos] = useState([]);
   
   useEffect(() => {
-    setTodos(todos => [
+    setTodos(() => [
       {task: "Complete the javascript course", completed: true, id: 5},
       {task: "Jog around the park 3x", completed: false, id: 0},
       {task: "10 minutes meditation", completed: false, id: 1},
@@ -21,7 +21,7 @@ export default function Dashboard() {
   }, []);
   
   useEffect(() => {
-    setSortedTodos(currentValue => todos.concat());
+    setSortedTodos(() => todos.concat());
   }, [todos]);
 
   const createTodo = (formChildren) => {
@@ -42,7 +42,7 @@ export default function Dashboard() {
       id: newTimerId
     };
     
-    setTodos(currentValue => todoList.concat([newTodo]));
+    setTodos(() => todoList.concat([newTodo]));
   };
 
   const markComplete = (id) => {
@@ -51,7 +51,7 @@ export default function Dashboard() {
     for (let i = 0; i < updatedTasks.length; i++) {
       if (updatedTasks[i].id === id) {
         updatedTasks[i].completed = !updatedTasks[i].completed;
-        setTodos(c => updatedTasks);
+        setTodos(() => updatedTasks);
         
         break;
       }
@@ -64,13 +64,13 @@ export default function Dashboard() {
   const clearCompleted = () =>
     setTodos(todos => todos.filter(todo => todo.completed == false));
   
-  const showAll = () => setSortedTodos(c => todos.concat());
+  const showAll = () => setSortedTodos(() => todos.concat());
 
   const showActive = () => 
-    setSortedTodos((_) => todos.filter(todo => todo.completed == false));
+    setSortedTodos(() => todos.filter(todo => todo.completed == false));
 
   const showCompleted = () => 
-    setSortedTodos((_) => todos.filter(todo => todo.completed == true));
+    setSortedTodos(() => todos.filter(todo => todo.completed == true));
 
   const actions = [
     {text: "All", action: showAll},
@@ -99,4 +99,4 @@ export default function Dashboard() {
       <ToolBar tools={actions} />
     </div>
   );
-};
+}

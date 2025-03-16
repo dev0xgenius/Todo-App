@@ -17,7 +17,7 @@ export default function ToolBar({tools}) {
       }
     </ul>
   );
-};
+}
 
 ToolBar.propTypes = {
   tools: PropTypes.arrayOf(

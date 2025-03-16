@@ -12,7 +12,7 @@ export default function TodosTracker({items, onClearCompleted}) {
       />
     </div>
   );
-};
+}
 
 TodosTracker.propTypes = {
   items: PropTypes.number.isRequired,
