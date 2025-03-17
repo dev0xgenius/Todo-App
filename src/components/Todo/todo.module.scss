@@ -1,12 +1,16 @@
 @import "../../scss/config/mixins";
 
 .todo {
-  @include flex;
   width: 100%;
-  padding: 18px;
-  background: var(--list-background);
-  border: none;
-  border-bottom: 1px solid var(--color-7);
+  
+  div.container {
+    @include flex;
+    width: 100%;
+    padding: 18px;
+    background: var(--list-background);
+    border: none;
+    border-bottom: 1px solid var(--color-7);
+  }
   
   input {
     cursor: pointer;

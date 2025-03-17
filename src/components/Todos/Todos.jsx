@@ -5,13 +5,11 @@ import styles from "./todos.module.scss";
 import { DndContext } from '@dnd-kit/core';
 
 export default function Todos(props) {
-  // const { isOver, setNodeRef } = useDroppable({ id: "todoList" });
-  
   const handleDragEnd = (evt) => {
     const { active, over } = evt;
-    if (over) alert(`Todo ${active.id} dropped into ${over.id}`);
+    props.swapTodos(active.id, over.id);
   };
-  
+ 
   const todos = props.todos.map(todo => {
     return <Todo
       description={todo.task}
@@ -26,7 +24,7 @@ export default function Todos(props) {
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <ul className={styles.todoList}>
-        { todos }
+        { todos.length ? todos : <div>Nothing to see here</div> }
       </ul>
       <div></div>
     </DndContext>
@@ -42,6 +40,7 @@ Todos.propTypes = {
     }).isRequired,
   ),
   
+  swapTodos: PropTypes.func,
   onDelete: PropTypes.func,
   onMarkComplete: PropTypes.func
 };

@@ -1,50 +1,54 @@
 import PropTypes from "prop-types";
 import { useState } from 'react';
-import { useDraggable } from '@dnd-kit/core'; 
+import { useDraggable, useDroppable } from '@dnd-kit/core';
 import Button from '../Button/Button.jsx';
 import styles from "./todo.module.scss";
 
 export default function Todo(props) {
   const [isComplete, setIsComplete] = useState(props.isCompleted);
+  const draggable = useDraggable({ id: props.id });
+  const droppable = useDroppable({ id: props.id });
+  
   const todoDynamicStyle = (isComplete) ? `${styles.todo} ${styles.completed}` : styles.todo;
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: props.id });
 
   const markTodo = () => {
     setIsComplete(!isComplete);
     props.onMarkComplete(props.id);
   };
-  
+
   return (
-    <li className={todoDynamicStyle} id={props.id} ref={setNodeRef}
-      style={ transform ? {
+    <li className={todoDynamicStyle} id={props.id} ref={droppable.setNodeRef}
+      style={draggable.transform ? {
         cursor: "grab",
         borderRadius: ".5rem",
-        border: "1px solid hsl(236, 9%, 61%)",
-        zIndex: "2",
-        transform: `translateY(${transform.y}px) scaleX(${ transform.scaleX })`,
-        // boxShadow: ".0025rem .00125rem 10rem",
-      } : { touchAction: "none"} }
+        border: "3px solid var(--color-6)",
+        overflow: "hidden",
+        transform: `translateY(${draggable.transform.y}px)`,
+      } : {
+        touchAction: "none"
+      }}
     >
+    <div className={styles.container}>
       <label className="checkboxContainer">
-        <input type='checkbox' 
+        <input type='checkbox'
           checked={props.isCompleted}
           onChange={markTodo}
         />
         <span className='checkbox'></span>
         <span className='check'>
-          <img src='/images/icon-check.svg' alt=""/>
+          <img src='/images/icon-check.svg' alt="" />
         </span>
       </label>
-      <input type='text'
+      <input ref={draggable.setNodeRef} type='text'
         defaultValue={props.description}
-        readOnly={true}
-        {...listeners } {...attributes}
+        readOnly={true} {...draggable.listeners} {...draggable.attributes}
       />
       <Button
-        img = {<img src="/images/icon-cross.svg" alt=""/>}
-        clickHandler={() => props.onDelete(props.id)} 
+        img={<img src="/images/icon-cross.svg" alt="" />}
+        clickHandler={() => props.onDelete(props.id)}
       />
-    </li>
+    </div>
+  </li>
   );
 }
 
