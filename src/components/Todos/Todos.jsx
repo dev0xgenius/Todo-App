@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 import Todo from "../Todo/Todo";
 import styles from "./todos.module.scss";
-// import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
+
+import { DndContext } from '@dnd-kit/core';
 
 export default function Todos(props) {
-  const todos = props.todos.map(todo => (
-    <Todo
+  // const { isOver, setNodeRef } = useDroppable({ id: "todoList" });
+  
+  const handleDragEnd = (evt) => {
+    const { active, over } = evt;
+    if (over) alert(`Todo ${active.id} dropped into ${over.id}`);
+  };
+  
+  const todos = props.todos.map(todo => {
+    return <Todo
       description={todo.task}
       isCompleted={todo.completed}
       id={todo.id} 
@@ -13,10 +21,15 @@ export default function Todos(props) {
       onDelete={props.onDelete}
       onMarkComplete={props.onMarkComplete}
     />
-  ));
+  });
 
   return (
-    <ul className={styles.todoList}>{ todos }</ul>
+    <DndContext onDragEnd={handleDragEnd}>
+      <ul className={styles.todoList}>
+        { todos }
+      </ul>
+      <div></div>
+    </DndContext>
   );
 }
 
