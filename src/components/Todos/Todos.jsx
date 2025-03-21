@@ -1,11 +1,17 @@
 import PropTypes from "prop-types";
 import Todo from "../Todo/Todo";
-import { useState } from "react";
 import styles from "./todos.module.scss";
 
+import { DndContext } from '@dnd-kit/core';
+
 export default function Todos(props) {
-  const todos = props.todos.map(todo => (
-    <Todo
+  const handleDragEnd = (evt) => {
+    const { active, over } = evt;
+    props.swapTodos(active.id, over.id);
+  };
+ 
+  const todos = props.todos.map(todo => {
+    return <Todo
       description={todo.task}
       isCompleted={todo.completed}
       id={todo.id} 
@@ -13,12 +19,17 @@ export default function Todos(props) {
       onDelete={props.onDelete}
       onMarkComplete={props.onMarkComplete}
     />
-  ));
+  });
 
   return (
-    <ul className={styles.todoList}>{ todos }</ul>
+    <DndContext onDragEnd={handleDragEnd}>
+      <ul className={styles.todoList}>
+        { todos.length ? todos : <div>Nothing to see here</div> }
+      </ul>
+      <div></div>
+    </DndContext>
   );
-};
+}
 
 Todos.propTypes = {
   todos: PropTypes.arrayOf(
@@ -27,5 +38,9 @@ Todos.propTypes = {
       completed: PropTypes.bool.isRequired,
       id: PropTypes.number.isRequired
     }).isRequired,
-  )
+  ),
+  
+  swapTodos: PropTypes.func,
+  onDelete: PropTypes.func,
+  onMarkComplete: PropTypes.func
 };

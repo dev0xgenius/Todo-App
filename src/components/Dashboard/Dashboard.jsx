@@ -10,18 +10,18 @@ export default function Dashboard() {
   const [sortedTodos, setSortedTodos] = useState([]);
   
   useEffect(() => {
-    setTodos(todos => [
-      {task: "Complete the javascript course", completed: true, id: 5},
-      {task: "Jog around the park 3x", completed: false, id: 0},
-      {task: "10 minutes meditation", completed: false, id: 1},
-      {task: "Read for 1hour", completed: false, id: 2},
-      {task: "Pick up groceries", completed: false, id: 3},
-      {task: "Complete Todo App on Frontend Mentor", completed: false, id: 4}
+    setTodos(() => [
+      {task: "Complete the javascript course", completed: true, id: 628},
+      {task: "Jog around the park 3x", completed: false, id: 256},
+      {task: "10 minutes meditation", completed: false, id: 993},
+      {task: "Read for 1hour", completed: false, id: 873},
+      {task: "Pick up groceries", completed: false, id: 124},
+      {task: "Complete Todo App on Frontend Mentor", completed: false, id: 987}
     ]);
   }, []);
   
   useEffect(() => {
-    setSortedTodos(currentValue => todos.concat());
+    setSortedTodos(() => todos.concat());
   }, [todos]);
 
   const createTodo = (formChildren) => {
@@ -42,7 +42,7 @@ export default function Dashboard() {
       id: newTimerId
     };
     
-    setTodos(currentValue => todoList.concat([newTodo]));
+    setTodos(() => todoList.concat([newTodo]));
   };
 
   const markComplete = (id) => {
@@ -51,26 +51,33 @@ export default function Dashboard() {
     for (let i = 0; i < updatedTasks.length; i++) {
       if (updatedTasks[i].id === id) {
         updatedTasks[i].completed = !updatedTasks[i].completed;
-        setTodos(c => updatedTasks);
+        setTodos(() => updatedTasks);
         
         break;
       }
     }
   };
 
-  const deleteTodo = (todoID) => 
-    setTodos(todos => todos.filter(todo => todo.id !== todoID));
-
-  const clearCompleted = () =>
-    setTodos(todos => todos.filter(todo => todo.completed == false));
+  const showAll = () => setSortedTodos(() => todos.concat());
+  const deleteTodo = (todoID) => setTodos(todos => todos.filter(todo => todo.id !== todoID));
+  const clearCompleted = () => setTodos(todos => todos.filter(todo => todo.completed == false));
+  const showActive = () => setSortedTodos(() => todos.filter(todo => todo.completed == false));
+  const showCompleted = () => setSortedTodos(() => todos.filter(todo => todo.completed == true));
   
-  const showAll = () => setSortedTodos(c => todos.concat());
+  const swapTodos = (todo1, todo2) => {
+    if (todo1 === todo2) return;
+    todo1 = sortedTodos.find(todo => todo.id === todo1);
+    todo2 = sortedTodos.find(todo => todo.id === todo2);
+    
+    const updatedTodos = sortedTodos.map(todo => {
+      if (todo === todo1) return todo2;
+      else if (todo === todo2) return todo1;
+      
+      return todo;
+    });
 
-  const showActive = () => 
-    setSortedTodos((_) => todos.filter(todo => todo.completed == false));
-
-  const showCompleted = () => 
-    setSortedTodos((_) => todos.filter(todo => todo.completed == true));
+    setSortedTodos(() => updatedTodos);
+  }
 
   const actions = [
     {text: "All", action: showAll},
@@ -88,6 +95,7 @@ export default function Dashboard() {
       <div className={styles.col}>
         <Todos
           todos={sortedTodos}
+          swapTodos={swapTodos}
           onDelete={deleteTodo}
           onMarkComplete={markComplete}
         />
@@ -99,4 +107,4 @@ export default function Dashboard() {
       <ToolBar tools={actions} />
     </div>
   );
-};
+}

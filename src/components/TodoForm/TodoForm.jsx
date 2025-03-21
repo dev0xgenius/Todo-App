@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./todoForm.module.scss";
 
 export default function TodoForm(props) {  
@@ -12,7 +12,7 @@ export default function TodoForm(props) {
   }
 
   function clearForm(form) {
-    setFormValue(fV => "");
+    setFormValue(() => "");
     form.querySelector('.todo-data').value="";
   }
 
@@ -30,10 +30,11 @@ export default function TodoForm(props) {
       />
     </form> 
   ) : <></>;
-};
+}
 
 TodoForm.propTypes = {
   open: PropTypes.bool.isRequired,
   placeholderText: PropTypes.string,
   handler: PropTypes.func,
+  value: PropTypes.string,
 };
