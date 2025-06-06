@@ -1,8 +1,8 @@
-import Dashboard from './components/Dashboard/Dashboard';
-import Header from './components/Header/Header';
+import Dashboard from "./components/Dashboard/Dashboard";
+import Header from "./components/Header/Header";
 import "./scss/index.scss";
 
-export default function App () {
+export default function App() {
   return (
     <>
       <div className="background-image"></div>
@@ -13,3 +13,4 @@ export default function App () {
     </>
   );
 }
+

@@ -24,7 +24,7 @@ export default function Todos(props) {
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <ul className={styles.todoList}>
-        { todos.length ? todos : <div>Nothing to see here</div> }
+        { todos.length ? todos : <div className={styles.emptyTodoList}>Nothing to see here</div> }
       </ul>
       <div></div>
     </DndContext>
